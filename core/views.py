@@ -17,29 +17,29 @@ import matplotlib.pyplot as plt
 
 
 def index(request):
-    #read image from computer
-    path=plt.imread("C:\\Users\\derar\\Desktop\\project_graduation_images\\ku.jpg")
-    faculty_name=return_faculty_name(path)
+#     #read image from computer
+#     path=plt.imread("C:\\Users\\derar\\Desktop\\project_graduation_images\\ku.jpg")
+#     faculty_name=return_faculty_name(path)
 
-    updated_faculty_name=re.sub('[123]',"",faculty_name)
+#     updated_faculty_name=re.sub('[123]',"",faculty_name)
 
-    updated_faculty_name=updated_faculty_name.lower()
+#     updated_faculty_name=updated_faculty_name.lower()
 
-    faculties_ids={
-        "kasit":1,
-        "medicine":2,
-        "engineering":3,
-        "shareeah":4,
-        "business":5,
-        "law":7,
-        "kitchen":8,
-    }
+#     faculties_ids={
+#         "kasit":1,
+#         "medicine":2,
+#         "engineering":3,
+#         "shareeah":4,
+#         "business":5,
+#         "law":7,
+#         "kitchen":8,
+#     }
 
-    #get faculty id
-    for key in faculties_ids:
-        if key==updated_faculty_name:
-            faculty_id=faculties_ids[key]
-            break
+#     #get faculty id
+#     for key in faculties_ids:
+#         if key==updated_faculty_name:
+#             faculty_id=faculties_ids[key]
+#             break
     
     # print(faculty_id)
 

@@ -23,7 +23,7 @@ class Employee(models.Model):
     department_employees=models.ForeignKey(Department,on_delete=models.CASCADE)
     first_name=models.CharField(max_length=20)
     last_name=models.CharField(max_length=20)
-    office_place=models.CharField(max_length=50,default=' ')
+    office_place=models.CharField(max_length=50,default=' ',blank=True)
     
 
     def __str__(self):
