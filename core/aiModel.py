@@ -15,6 +15,10 @@ from IPython.display import display
 from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
+
+class Model:
+    detection_model = tf.saved_model.load("C:\\Users\\derar\\Desktop\\project_graduation_images")
+print('ok')
 # patch tf1 into `utils.ops`
 utils_ops.tf = tf.compat.v1
 # Patch the location of gfile
@@ -23,7 +27,6 @@ tf.gfile = tf.io.gfile
 PATH_TO_LABELS = "C:\\Users\\derar\\Desktop\\project_graduation_images\\variables\\labelmap.pbtxt"
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=False)
 # If you want to test the code with your images, just add path to the images to the TEST_IMAGE_PATHS.
-detection_model = tf.saved_model.load("C:\\Users\\derar\\Desktop\\project_graduation_images")
 def run_inference_for_single_image(model, image):
     image = np.asarray(image)
     # The input needs to be a tensor, convert it using `tf.convert_to_tensor`.
@@ -40,9 +43,13 @@ def run_inference_for_single_image(model, image):
     output_dict = {key:value[0, :num_detections].numpy() 
     for key,value in output_dict.items()}
     output_dict['num_detections'] = num_detections
+
+    score = output_dict['detection_scores'][0]
+    if score < 0.6:
+        return "None"   
     
     return category_index[output_dict['detection_classes'][0]]['name']
     
-def return_faculty_name(PATH):
-    name = run_inference_for_single_image(detection_model, PATH)
+def return_faculty_name(image):
+    name = run_inference_for_single_image(Model.detection_model, image)
     return name

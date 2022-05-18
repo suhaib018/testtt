@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+CSRF_TRUSTED_ORIGINS = ['https://f16c-185-12-246-233.ngrok.io']
 # Application definition
 
 INSTALLED_APPS = [
@@ -138,5 +138,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-#activate django-heroku
-django_heroku.settings(locals())
